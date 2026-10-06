@@ -1,26 +1,13 @@
 import { STORE } from '../config.js';
 
-// Logo de DTF Print: solo las letras, sin fondo.
-// - logo.png       -> letras negras (tema claro)
-// - logo-white.png -> letras blancas (tema oscuro), para que se siga leyendo.
+// Logo tipográfico "DTF Print" (sin imagen): "DTF" en gradiente de marca
+// (dorado -> magenta -> azul) y "Print" en el color del tema.
 export default function Logo({ height = 34 }) {
+  const fontSize = Math.round(height * 0.62);
   return (
-    <>
-      <img
-        src="/logo.png"
-        alt={STORE.name}
-        className="logo logo-light"
-        style={{ height, width: 'auto' }}
-        draggable={false}
-      />
-      <img
-        src="/logo-white.png"
-        alt=""
-        className="logo logo-dark"
-        style={{ height, width: 'auto' }}
-        draggable={false}
-        aria-hidden="true"
-      />
-    </>
+    <span className="logo-wordmark" style={{ fontSize }} aria-label={STORE.name}>
+      <span className="lw-dtf">DTF</span>
+      <span className="lw-print">Print</span>
+    </span>
   );
 }

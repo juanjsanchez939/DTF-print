@@ -132,12 +132,25 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
 .site-header.scrolled .nav-shell { box-shadow: 0 14px 44px rgba(23, 19, 31, 0.16), inset 0 1px 0 var(--glass-inset); }
 
 .brand { display: flex; flex-direction: column; line-height: 1.05; flex-shrink: 0; }
-.brand .logo { display: block; }
 .brand-logo { height: 30px; width: auto; }
-/* Logo: versión negra en claro, versión blanca en oscuro */
-.logo-dark { display: none; }
-[data-theme='dark'] .logo-light { display: none; }
-[data-theme='dark'] .logo-dark { display: block; }
+/* Wordmark "DTF Print" (tipografía + colores de marca, sin imagen) */
+.logo-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.lw-dtf {
+  background: linear-gradient(115deg, #F8D000 0%, #F80068 55%, #0090E0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.lw-print { font-weight: 500; color: var(--ink); }
 .brand-wordmark {
   font-family: var(--font-display);
   font-size: 20px;
