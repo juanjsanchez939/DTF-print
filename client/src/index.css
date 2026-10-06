@@ -132,7 +132,6 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
 .site-header.scrolled .nav-shell { box-shadow: 0 14px 44px rgba(23, 19, 31, 0.16), inset 0 1px 0 var(--glass-inset); }
 
 .brand { display: flex; flex-direction: column; line-height: 1.05; flex-shrink: 0; }
-.brand-logo { height: 30px; width: auto; }
 /* Wordmark "DTF PRINT" (tipografía + colores de marca, sin imagen) */
 .logo-wordmark {
   font-family: var(--font-display);
@@ -144,16 +143,26 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   align-items: center;
 }
 .lw-tile {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.18em;
-  height: 1.18em;
-  margin-right: 0.09em;
-  border-radius: 0.22em;
-  color: #17131F; /* letra negra sobre el bloque de color */
+  width: 1.28em;
+  height: 1.16em;
+  margin-right: 0.14em;
 }
-.lw-print { margin-left: 0.32em; font-weight: 800; color: var(--ink); }
+.lw-brush {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.lw-letter {
+  position: relative;
+  z-index: 1;
+  color: #17131F;
+}
+.lw-print { margin-left: 0.28em; font-weight: 800; color: var(--ink); }
 .brand-wordmark {
   font-family: var(--font-display);
   font-size: 20px;
@@ -653,7 +662,7 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
 .product-add:active { transform: scale(0.94); }
 .product-add svg { width: 16px; height: 16px; }
 
-.empty-state, .loading-state {
+.empty-state {
   grid-column: 1 / -1;
   text-align: center;
   padding: 70px 20px;
@@ -1067,32 +1076,6 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   color: var(--ink-muted);
 }
 .brand-photo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bc); }
-
-/* ================== PERSONALIZADOR DE COLOR (detalle) ================== */
-.detail-media { position: relative; }
-.detail-media img.recolored { filter: grayscale(1); }
-.color-overlay {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  mix-blend-mode: color;
-  pointer-events: none;
-}
-.detail-colors { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
-.detail-colors-label { font-size: 14px; font-weight: 600; color: var(--ink-muted); }
-.detail-swatches { display: flex; gap: 9px; flex-wrap: wrap; }
-.color-swatch {
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16);
-  transition: transform 0.25s var(--ease-spring), border-color 0.2s var(--ease-out);
-}
-.color-swatch:hover { transform: scale(1.16); }
-.color-swatch.active { border-color: var(--ink); transform: scale(1.14); }
-.color-swatch.original {
-  background: linear-gradient(135deg, transparent 44%, #9aa0aa 44%, #9aa0aa 56%, transparent 56%), #ffffff;
-}
 
 /* ============================ SKELETON ============================ */
 .skeleton { pointer-events: none; }

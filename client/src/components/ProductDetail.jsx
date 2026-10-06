@@ -13,21 +13,8 @@ const CartIcon = () => (
   </svg>
 );
 
-// Colores para el personalizador (incluye los de la marca).
-const COLORS = [
-  { name: 'Original', value: null },
-  { name: 'Dorado', value: '#F8D000' },
-  { name: 'Magenta', value: '#F80068' },
-  { name: 'Azul', value: '#0090E0' },
-  { name: 'Negro', value: '#17131F' },
-  { name: 'Verde', value: '#22C55E' },
-  { name: 'Naranja', value: '#FF5A1F' },
-  { name: 'Blanco', value: '#F7F7F7' },
-];
-
 export default function ProductDetail({ product, onBack, onAdd }) {
   const [qty, setQty] = useState(1);
-  const [color, setColor] = useState(null);
 
   if (!product) {
     return (
@@ -50,8 +37,7 @@ export default function ProductDetail({ product, onBack, onAdd }) {
 
       <div className="detail-grid">
         <div className="detail-media">
-          <img src={product.image} alt={product.name} className={color ? 'recolored' : ''} />
-          {color && <div className="color-overlay" style={{ background: color }} />}
+          <img src={product.image} alt={product.name} />
         </div>
 
         <div className="detail-info">
@@ -60,25 +46,6 @@ export default function ProductDetail({ product, onBack, onAdd }) {
           <p className="detail-desc">{product.description}</p>
 
           <div className="detail-price">{formatPrice(product.price)}</div>
-
-          {/* Personalizador de color (previsualización en vivo) */}
-          <div className="detail-colors">
-            <span className="detail-colors-label">Elegí color:</span>
-            <div className="detail-swatches">
-              {COLORS.map((c) => (
-                <button
-                  key={c.name}
-                  type="button"
-                  className={`color-swatch ${color === c.value ? 'active' : ''} ${c.value == null ? 'original' : ''}`}
-                  style={c.value ? { background: c.value } : undefined}
-                  onClick={() => setColor(c.value)}
-                  title={c.name}
-                  aria-label={`Color ${c.name}`}
-                  aria-pressed={color === c.value}
-                />
-              ))}
-            </div>
-          </div>
 
           <div className={`detail-stock ${outOfStock ? 'out' : ''}`}>
             <span className="stock-dot" />
