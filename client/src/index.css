@@ -959,6 +959,121 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--rot)) scale(0.3); }
 }
 
+/* ========================== AURORA / FONDO ========================== */
+.app-content { position: relative; z-index: 1; }
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+.b1 {
+  width: 540px; height: 540px;
+  top: -160px; left: -120px;
+  background: radial-gradient(circle at center, rgba(248, 0, 104, 0.30), transparent 62%);
+  animation: drift1 26s ease-in-out infinite;
+}
+.b2 {
+  width: 480px; height: 480px;
+  top: 16%; right: -140px;
+  background: radial-gradient(circle at center, rgba(0, 144, 224, 0.26), transparent 62%);
+  animation: drift2 32s ease-in-out infinite;
+}
+.b3 {
+  width: 560px; height: 560px;
+  bottom: -200px; left: 28%;
+  background: radial-gradient(circle at center, rgba(248, 208, 0, 0.24), transparent 62%);
+  animation: drift3 29s ease-in-out infinite;
+}
+[data-theme='dark'] .blob { opacity: 0.7; }
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(70px, 50px) scale(1.12); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-60px, 70px) scale(1.08); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -60px) scale(1.16); }
+}
+
+/* ========================== GALERÍA DE MARCA ========================== */
+.brand-gallery { max-width: var(--max-w); margin: 0 auto; padding: 40px 24px 80px; }
+.brand-gallery-head { margin-bottom: 28px; }
+.brand-gallery-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-top: 14px;
+}
+.brand-gallery-title .grad {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-gallery-grid { columns: 4; column-gap: 16px; }
+.brand-photo {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  padding: 9px 9px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.brand-photo:nth-child(odd) { transform: rotate(-1.6deg); }
+.brand-photo:nth-child(even) { transform: rotate(1.6deg); }
+.brand-photo:hover { transform: rotate(0deg) translateY(-5px); box-shadow: var(--shadow-lift); }
+.brand-photo img { width: 100%; height: auto; border-radius: calc(var(--radius-md) - 7px); }
+.brand-photo-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.brand-photo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bc); }
+
+/* ================== PERSONALIZADOR DE COLOR (detalle) ================== */
+.detail-media { position: relative; }
+.detail-media img.recolored { filter: grayscale(1); }
+.color-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+.detail-colors { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+.detail-colors-label { font-size: 14px; font-weight: 600; color: var(--ink-muted); }
+.detail-swatches { display: flex; gap: 9px; flex-wrap: wrap; }
+.color-swatch {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16);
+  transition: transform 0.25s var(--ease-spring), border-color 0.2s var(--ease-out);
+}
+.color-swatch:hover { transform: scale(1.16); }
+.color-swatch.active { border-color: var(--ink); transform: scale(1.14); }
+.color-swatch.original {
+  background: linear-gradient(135deg, transparent 44%, #9aa0aa 44%, #9aa0aa 56%, transparent 56%), #ffffff;
+}
+
 /* ============================ RESPONSIVE ============================ */
 @media (max-width: 900px) {
   .nav { display: none; }
@@ -973,6 +1088,7 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   .detail-grid { grid-template-columns: 1fr; gap: 28px; }
   .detail-wrap { padding: 24px 16px 70px; }
   .cart-drawer { width: 100%; max-width: calc(100vw - 24px); }
+  .brand-gallery-grid { columns: 2; }
 }
 
 /* ====================== PREFERS-REDUCED-MOTION ====================== */

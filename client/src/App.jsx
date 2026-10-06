@@ -7,6 +7,8 @@ import ProductGrid from './components/ProductGrid.jsx';
 import ProductDetail from './components/ProductDetail.jsx';
 import CartDrawer from './components/CartDrawer.jsx';
 import Footer from './components/Footer.jsx';
+import Aurora from './components/Aurora.jsx';
+import BrandGallery from './components/BrandGallery.jsx';
 import { useCart } from './context/CartContext.jsx';
 import { getCategories, getProducts } from './api.js';
 import { burst } from './lib/confetti.js';
@@ -95,50 +97,56 @@ export default function App() {
 
   return (
     <>
-      <Header
-        categories={categories}
-        activeCategory={activeCategory}
-        onSelectCategory={selectCategory}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        onOpenCart={() => setCartOpen(true)}
-      />
+      <Aurora />
 
-      {view.name === 'product' ? (
-        <ProductDetail product={detailProduct} onBack={goCatalog} onAdd={handleAdd} />
-      ) : (
-        <>
-          <Hero products={products} onCTA={() => catalogRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
+      <div className="app-content">
+        <Header
+          categories={categories}
+          activeCategory={activeCategory}
+          onSelectCategory={selectCategory}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          onOpenCart={() => setCartOpen(true)}
+        />
 
-          <Marquee />
+        {view.name === 'product' ? (
+          <ProductDetail product={detailProduct} onBack={goCatalog} onAdd={handleAdd} />
+        ) : (
+          <>
+            <Hero products={products} onCTA={() => catalogRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
 
-          <main className="catalog" id="catalog" ref={catalogRef}>
-            <CategoryRail categories={categories} activeCategory={activeCategory} onSelect={selectCategory} />
+            <Marquee />
 
-            <div className="catalog-head">
-              <h1 className="catalog-title">{activeCategory === 'all' ? 'Todos los productos' : activeCategory}</h1>
-              <span className="catalog-count">
-                {filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}
-              </span>
-            </div>
+            <main className="catalog" id="catalog" ref={catalogRef}>
+              <CategoryRail categories={categories} activeCategory={activeCategory} onSelect={selectCategory} />
 
-            {error ? (
-              <div className="empty-state">Error cargando el catálogo: {error}</div>
-            ) : (
-              <ProductGrid
-                products={filtered}
-                loading={loading}
-                onAdd={handleAdd}
-                onOpen={openProduct}
-                favorites={favorites}
-                onToggleFavorite={toggleFavorite}
-              />
-            )}
-          </main>
-        </>
-      )}
+              <div className="catalog-head">
+                <h1 className="catalog-title">{activeCategory === 'all' ? 'Todos los productos' : activeCategory}</h1>
+                <span className="catalog-count">
+                  {filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}
+                </span>
+              </div>
 
-      <Footer />
+              {error ? (
+                <div className="empty-state">Error cargando el catálogo: {error}</div>
+              ) : (
+                <ProductGrid
+                  products={filtered}
+                  loading={loading}
+                  onAdd={handleAdd}
+                  onOpen={openProduct}
+                  favorites={favorites}
+                  onToggleFavorite={toggleFavorite}
+                />
+              )}
+            </main>
+
+            <BrandGallery />
+          </>
+        )}
+
+        <Footer />
+      </div>
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 
