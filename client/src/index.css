@@ -132,27 +132,15 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
 .site-header.scrolled .nav-shell { box-shadow: 0 14px 44px rgba(23, 19, 31, 0.16), inset 0 1px 0 var(--glass-inset); }
 
 .brand { display: flex; flex-direction: column; line-height: 1.05; flex-shrink: 0; }
-/* Logo: icono + wordmark "DTF Print" */
-.logo-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-}
+/* Logo: solo el icono de la marca */
 .logo-icon {
   display: block;
   width: auto;
-  border-radius: 9px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s var(--ease-spring);
 }
-.logo-wordmark {
-  font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  color: var(--ink);
-}
-.lw-print { font-weight: 500; }
+.brand:hover .logo-icon { transform: scale(1.05) rotate(-2deg); }
 .brand-wordmark {
   font-family: var(--font-display);
   font-size: 20px;
@@ -165,6 +153,7 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   white-space: nowrap;
 }
 .brand-tagline {
+  margin-top: 5px;
   font-size: 10.5px;
   font-weight: 500;
   letter-spacing: 0.08em;

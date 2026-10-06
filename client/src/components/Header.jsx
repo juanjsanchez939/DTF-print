@@ -86,7 +86,7 @@ export default function Header({ categories, activeCategory, onSelectCategory, s
       <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-shell">
           <a className="brand" href="#">
-            <Logo height={34} />
+            <Logo />
             <span className="brand-tagline">{STORE.tagline}</span>
           </a>
 

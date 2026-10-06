@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <Logo height={30} />
+          <Logo height={36} />
           <p>Impresión por sublimación y DTF. Personalizamos tazas, remeras, bolsos y más.</p>
           <div className="socials" style={{ marginTop: 18 }}>
             <a href={STORE.social.facebook} className="social" aria-label="Facebook" rel="noreferrer"><FacebookIcon /></a>
