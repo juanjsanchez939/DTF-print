@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import Marquee from './components/Marquee.jsx';
+import StatsStrip from './components/StatsStrip.jsx';
 import CategoryRail from './components/CategoryRail.jsx';
 import ProductGrid from './components/ProductGrid.jsx';
 import ProductDetail from './components/ProductDetail.jsx';
@@ -116,6 +117,14 @@ export default function App() {
             <Hero products={products} onCTA={() => catalogRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
 
             <Marquee />
+
+            <StatsStrip
+              stats={[
+                { value: products.length, label: 'productos' },
+                { value: categories.length, label: 'categorías' },
+                { value: 3, label: 'colores de marca' },
+              ]}
+            />
 
             <main className="catalog" id="catalog" ref={catalogRef}>
               <CategoryRail categories={categories} activeCategory={activeCategory} onSelect={selectCategory} />

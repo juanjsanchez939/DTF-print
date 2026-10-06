@@ -1074,6 +1074,53 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   background: linear-gradient(135deg, transparent 44%, #9aa0aa 44%, #9aa0aa 56%, transparent 56%), #ffffff;
 }
 
+/* ============================ SKELETON ============================ */
+.skeleton { pointer-events: none; }
+.sk-img { aspect-ratio: 1 / 1; border-radius: calc(var(--radius-lg) - 9px); }
+.sk-line { height: 12px; border-radius: 6px; margin-top: 14px; }
+.sk-line.short { width: 55%; }
+.skeleton .sk-img,
+.skeleton .sk-line {
+  background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--bg-elevated) 50%, var(--bg-subtle) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================ STATS ============================ */
+.stats-strip { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px 20px; }
+.stats-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 28px 32px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+.stat { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.stat-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 /* ============================ RESPONSIVE ============================ */
 @media (max-width: 900px) {
   .nav { display: none; }
@@ -1089,6 +1136,7 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   .detail-wrap { padding: 24px 16px 70px; }
   .cart-drawer { width: 100%; max-width: calc(100vw - 24px); }
   .brand-gallery-grid { columns: 2; }
+  .stats-inner { padding: 20px 14px; gap: 12px; }
 }
 
 /* ====================== PREFERS-REDUCED-MOTION ====================== */
