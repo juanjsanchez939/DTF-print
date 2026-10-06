@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+
+# Build
+dist/
+client/dist/
+
+# Variables de entorno
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos temporales / descargados (no van al repo)
+assets/products/
+assets/logo-original.png
+src/original/
+WhatsApp Image*.jpeg
+WhatsApp Image*.png
+
+# Versión estática antigua (reemplazada por client/)
+/index.html
+/css/
+/js/

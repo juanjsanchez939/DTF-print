@@ -1,0 +1,16 @@
+{
+  "name": "dtf-print",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tienda de sublimación DTF Print — stack MERN (MongoDB + Express + React + Node)",
+  "scripts": {
+    "setup": "npm install && npm install --prefix server && npm install --prefix client",
+    "seed": "npm run seed --prefix server",
+    "dev": "concurrently -n server,client -c blue,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
