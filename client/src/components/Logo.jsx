@@ -1,13 +1,16 @@
 import { STORE } from '../config.js';
 
-// Logo tipográfico "DTF Print" (sin imagen): "DTF" en gradiente de marca
-// (dorado -> magenta -> azul) y "Print" en el color del tema.
+// Logo tipográfico (sin imagen): "DTF PRINT" en negrita.
+// "DTF" con cada letra en un color de marca (D dorado, T magenta, F azul)
+// y "PRINT" en el color del tema.
 export default function Logo({ height = 34 }) {
-  const fontSize = Math.round(height * 0.62);
+  const fontSize = Math.round(height * 0.56);
   return (
     <span className="logo-wordmark" style={{ fontSize }} aria-label={STORE.name}>
-      <span className="lw-dtf">DTF</span>
-      <span className="lw-print">Print</span>
+      <span style={{ color: '#F8D000' }}>D</span>
+      <span style={{ color: '#F80068' }}>T</span>
+      <span style={{ color: '#0090E0' }}>F</span>
+      <span className="lw-print">PRINT</span>
     </span>
   );
 }
