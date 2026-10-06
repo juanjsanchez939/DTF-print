@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158 40">
-  <circle cx="17" cy="23" r="10.5" fill="#F8D000" style="mix-blend-mode:multiply"/>
-  <circle cx="27.5" cy="23" r="10.5" fill="#F80068" style="mix-blend-mode:multiply"/>
-  <circle cx="22.5" cy="12.5" r="10.5" fill="#0090E0" style="mix-blend-mode:multiply"/>
-  <text x="45" y="26.5" font-family="Sora, Arial, sans-serif" font-weight="800" font-size="19" fill="#16090F" letter-spacing="-0.5">DTF<tspan font-weight="500" opacity="0.72">Print</tspan></text>
-</svg>
