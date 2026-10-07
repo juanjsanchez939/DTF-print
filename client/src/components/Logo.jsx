@@ -4,7 +4,7 @@ import { STORE } from '../config.js';
 export default function Logo({ height = 42 }) {
   return (
     <img
-      src="/icono.png"
+      src="/logo.png"
       alt={STORE.name}
       className="logo-icon"
       style={{ height }}

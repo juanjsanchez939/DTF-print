@@ -19,6 +19,8 @@ assets/logo-original.png
 src/original/
 WhatsApp Image*.jpeg
 WhatsApp Image*.png
+logo.jpg
+icono.png
 
 # Versión estática antigua (reemplazada por client/)
 /index.html
