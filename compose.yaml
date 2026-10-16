@@ -1,0 +1,37 @@
+# MongoDB de desarrollo para DTF Print.
+#
+#   cp .env.example .env     # y completá MONGO_USERNAME / MONGO_PASSWORD
+#   docker compose up -d
+#   docker compose ps        # el servicio debe quedar "healthy"
+#
+# El puerto se publica solo en BIND_IP (127.0.0.1 por defecto): la base queda
+# accesible para la app, pero no expuesta a la red local.
+#
+# La URI para server/.env se arma así:
+#   mongodb://<MONGO_USERNAME>:<MONGO_PASSWORD>@<BIND_IP>:<MONGO_PORT>/<MONGO_DATABASE>?authSource=admin
+
+name: dtf-print
+
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: dtf-print-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME:?definí MONGO_USERNAME en .env (ver .env.example)}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?definí MONGO_PASSWORD en .env (ver .env.example)}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-dtf_print}
+    ports:
+      - "${BIND_IP:-127.0.0.1}:${MONGO_PORT:-27017}:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      # `ping` no exige autenticación: el healthcheck no lleva secretos.
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 }).ok' | grep -q 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  mongo-data:
